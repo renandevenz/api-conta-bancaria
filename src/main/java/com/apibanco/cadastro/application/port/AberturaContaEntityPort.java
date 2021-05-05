@@ -2,7 +2,7 @@ package com.apibanco.cadastro.application.port;
 
 import com.apibanco.cadastro.output.model.ContaDocument;
 
-public interface AberturaContaPort {
+public interface AberturaContaEntityPort {
 
-    void readConta(ContaDocument contaDocument);
+    void salvarContaEntity(ContaDocument contaDocument);
 }

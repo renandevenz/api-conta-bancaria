@@ -2,8 +2,7 @@ package com.apibanco.cadastro.application.usecase;
 
 import com.apibanco.cadastro.domain.Conta;
 
-public interface AberturaContaUseCase {
+public interface CadastrarContaUseCase {
 
-    void cadastrarConta(Conta conta);
-
+    void salvarConta(Conta conta);
 }

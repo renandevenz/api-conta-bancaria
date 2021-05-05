@@ -1,12 +1,14 @@
 package com.apibanco.cadastro.domain;
 
 import com.apibanco.cadastro.output.model.TipoConta;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
 public class Conta {
 
         @NotEmpty
