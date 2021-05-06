@@ -5,9 +5,9 @@ import com.apibanco.cadastro.input.dto.AberturaContaRequest;
 
 public class AberturaContaRequestMapper {
 
-    public static AberturaContaRequest convert(Conta conta) {
+    public void convert(Conta conta) {
 
-        return AberturaContaRequest.builder()
+        AberturaContaRequest.builder()
                 .agencia(conta.getAgencia())
                 .numeroConta(conta.getNumeroConta())
                 .nome(conta.getNome())
