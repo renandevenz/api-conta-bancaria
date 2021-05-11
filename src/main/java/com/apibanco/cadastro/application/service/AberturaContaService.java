@@ -1,9 +1,8 @@
 package com.apibanco.cadastro.application.service;
 
 import com.apibanco.cadastro.application.port.AberturaContaEntityPort;
-import com.apibanco.cadastro.application.port.CadastrarContaPort;
-import com.apibanco.cadastro.application.usecase.AberturaContaEntityUseCase;
-import com.apibanco.cadastro.application.usecase.CadastrarContaUseCase;
+import com.apibanco.cadastro.application.port.ProcessarContaPort;
+import com.apibanco.cadastro.application.usecase.AberturaContaUseCase;
 import com.apibanco.cadastro.domain.Conta;
 import com.apibanco.cadastro.exception.ExceptionEnum;
 import com.apibanco.cadastro.exception.ResourceException;
@@ -12,27 +11,34 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Log
-public class AberturaContaService implements AberturaContaEntityUseCase, CadastrarContaUseCase {
+public class AberturaContaService implements AberturaContaUseCase {
 
     private final AberturaContaEntityPort aberturaContaPort;
-    private final CadastrarContaPort cadastrarContaPort;
+    private final ProcessarContaPort processarContaPort;
 
     @Override
-    public void cadastrarConta(ContaDocument contaDocument) {
+    public Conta cadastrarConta(Conta conta) {
 
-        try {
-            aberturaContaPort.salvarContaEntity(contaDocument);
-        } catch (ResourceException e) {
-            log.severe(e.getMessage() + ExceptionEnum.MESSAGE.getMessage());
-        }
+        log.info("Conta processada :" + conta);
+
+       return Optional.ofNullable(processarContaPort.processar(conta))
+                .orElseThrow(ResourceException::new);
     }
 
     @Override
-    public void salvarConta(Conta conta) throws ResourceException {
+    public ContaDocument cadastrarContaEntity(Conta conta) {
 
-        cadastrarContaPort.registrarConta(conta);
+        try {
+            log.info("Conta salva no banco de dados :" + conta);
+            return aberturaContaPort.salvarContaEntity(conta);
+        } catch (Exception e) {
+            log.severe(e.getMessage());
+            throw new ResourceException(ExceptionEnum.MESSAGE.getMessage());
+        }
     }
 }

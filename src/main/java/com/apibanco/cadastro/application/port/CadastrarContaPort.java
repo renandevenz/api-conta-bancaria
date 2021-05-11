@@ -1,8 +1,8 @@
 package com.apibanco.cadastro.application.port;
 
-import com.apibanco.cadastro.domain.Conta;
+import com.apibanco.cadastro.input.dto.SalvarContaDto;
 
 public interface CadastrarContaPort {
 
-    void registrarConta(Conta conta);
+    void registrarConta(SalvarContaDto salvarContaDto);
 }

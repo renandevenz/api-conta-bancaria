@@ -15,9 +15,10 @@ public class AberturaContaAdapter implements AberturaContaEntityPort {
     private final ContaRepository repository;
 
     @Override
-    public void salvarContaEntity(ContaDocument contaDocument) {
+    public ContaDocument salvarContaEntity(Conta conta) {
 
-        Conta conta = AberturaContaMapper.convertToDomain(contaDocument);
-        repository.save(contaDocument);
+        ContaDocument contaDocument = AberturaContaMapper.convertToEntity(conta);
+
+        return repository.save(contaDocument);
     }
 }

@@ -21,5 +21,5 @@ public class ContaDocument {
 
     private String numeroConta;
 
-    private TipoConta tipoConta;
+    private String tipoConta;
 }

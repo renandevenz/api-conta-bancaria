@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AberturaContaRequest {
+public class SalvarContaDto {
 
     private String cpf;
 

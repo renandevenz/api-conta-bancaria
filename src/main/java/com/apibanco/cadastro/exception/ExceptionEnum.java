@@ -9,5 +9,5 @@ public enum ExceptionEnum {
 
     MESSAGE("Não foi possível validar o cadastro da conta.");
 
-    private String message;
+    private final String message;
 }

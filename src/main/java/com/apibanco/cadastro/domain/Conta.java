@@ -1,6 +1,5 @@
 package com.apibanco.cadastro.domain;
 
-import com.apibanco.cadastro.output.model.TipoConta;
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,6 +26,5 @@ public class Conta {
         @Size(max = 6)
         private String numeroConta;
 
-        @NotEmpty
         private TipoConta tipoConta;
 }

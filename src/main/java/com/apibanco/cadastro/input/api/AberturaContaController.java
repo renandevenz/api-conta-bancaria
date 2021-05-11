@@ -1,24 +1,33 @@
 package com.apibanco.cadastro.input.api;
 
-import com.apibanco.cadastro.domain.Conta;
 import com.apibanco.cadastro.input.adapter.AberturaContaControllerAdapter;
+import com.apibanco.cadastro.input.dto.SalvarContaDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/conta")
 @RequiredArgsConstructor
+@Log
 public class AberturaContaController {
 
     private final AberturaContaControllerAdapter adapter;
 
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public void cadastrarConta(@RequestBody @Valid Conta conta) {
+    public ResponseEntity<SalvarContaDto> cadastrarConta(@RequestBody @Valid SalvarContaDto requestBody) {
 
-        adapter.registrarConta(conta);
+        adapter.registrarConta(requestBody);
+
+        log.info("Evento recebido: " + "Payload: " + requestBody);
+
+        return new ResponseEntity<>(requestBody, HttpStatus.CREATED);
     }
 }
