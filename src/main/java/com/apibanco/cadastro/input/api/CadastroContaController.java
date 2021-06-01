@@ -1,6 +1,6 @@
 package com.apibanco.cadastro.input.api;
 
-import com.apibanco.cadastro.input.adapter.AberturaContaControllerAdapter;
+import com.apibanco.cadastro.input.adapter.CadastroContaControllerAdapter;
 import com.apibanco.cadastro.input.dto.SalvarContaDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -17,9 +17,9 @@ import javax.validation.Valid;
 @RequestMapping("/conta")
 @RequiredArgsConstructor
 @Log
-public class AberturaContaController {
+public class CadastroContaController {
 
-    private final AberturaContaControllerAdapter adapter;
+    private final CadastroContaControllerAdapter adapter;
 
     @PostMapping
     public ResponseEntity<SalvarContaDto> cadastrarConta(@RequestBody @Valid SalvarContaDto requestBody) {

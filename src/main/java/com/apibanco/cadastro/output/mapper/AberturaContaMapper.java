@@ -19,4 +19,15 @@ public class AberturaContaMapper {
                 .tipoConta(TipoConta.CC.getTipo())
                 .build();
     }
+
+    public static Conta convertToDomain(ContaDocument document) {
+
+        return Conta.builder()
+                .agencia(document.getAgencia())
+                .numeroConta(document.getNumeroConta())
+                .nome(document.getNome())
+                .tipoConta(TipoConta.CC)
+                .cpf(document.getCpf())
+                .build();
+    }
 }

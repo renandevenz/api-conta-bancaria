@@ -2,14 +2,14 @@ package com.apibanco.cadastro.input.mapper;
 
 import com.apibanco.cadastro.domain.Conta;
 import com.apibanco.cadastro.domain.TipoConta;
-import com.apibanco.cadastro.input.dto.AberturaContaRequest;
+import com.apibanco.cadastro.input.dto.CadastroContaRequest;
 import com.apibanco.cadastro.input.dto.SalvarContaDto;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 
 @Component
 @Log
-public class AberturaContaRequestMapper {
+public class CadastroContaRequestMapper {
 
     public Conta convert(SalvarContaDto contaDto) {
 
@@ -26,9 +26,9 @@ public class AberturaContaRequestMapper {
         return conta;
     }
 
-    public AberturaContaRequest convertToDto(Conta conta) {
+    public CadastroContaRequest convertToDto(Conta conta) {
 
-        AberturaContaRequest request = AberturaContaRequest.builder()
+        CadastroContaRequest request = CadastroContaRequest.builder()
                 .agencia(conta.getAgencia())
                 .numeroConta(conta.getNumeroConta())
                 .nome(conta.getNome())

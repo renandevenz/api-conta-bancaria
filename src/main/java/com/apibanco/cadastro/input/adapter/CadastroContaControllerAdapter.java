@@ -1,10 +1,10 @@
 package com.apibanco.cadastro.input.adapter;
 
-import com.apibanco.cadastro.application.port.CadastrarContaPort;
-import com.apibanco.cadastro.application.usecase.AberturaContaUseCase;
+import com.apibanco.cadastro.application.port.CadastroContaPort;
+import com.apibanco.cadastro.application.usecase.CadastroContaUseCase;
 import com.apibanco.cadastro.domain.Conta;
 import com.apibanco.cadastro.input.dto.SalvarContaDto;
-import com.apibanco.cadastro.input.mapper.AberturaContaRequestMapper;
+import com.apibanco.cadastro.input.mapper.CadastroContaRequestMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Log
-public class AberturaContaControllerAdapter implements CadastrarContaPort {
+public class CadastroContaControllerAdapter implements CadastroContaPort {
 
-    private final AberturaContaRequestMapper mapper;
-    private final AberturaContaUseCase useCase;
+    private final CadastroContaRequestMapper mapper;
+    private final CadastroContaUseCase useCase;
 
     @Override
     public void registrarConta(SalvarContaDto salvarContaDto) {

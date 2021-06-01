@@ -1,10 +1,8 @@
 package com.apibanco.cadastro.input.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class SalvarContaDto {
 
     private String cpf;

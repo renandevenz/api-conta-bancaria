@@ -1,8 +1,7 @@
 package com.apibanco.cadastro.application.service;
 
-import com.apibanco.cadastro.application.port.AberturaContaEntityPort;
-import com.apibanco.cadastro.application.port.ProcessarContaPort;
-import com.apibanco.cadastro.application.usecase.AberturaContaUseCase;
+import com.apibanco.cadastro.application.port.CadastroContaEntityPort;
+import com.apibanco.cadastro.application.usecase.CadastroContaUseCase;
 import com.apibanco.cadastro.domain.Conta;
 import com.apibanco.cadastro.exception.ExceptionEnum;
 import com.apibanco.cadastro.exception.ResourceException;
@@ -16,17 +15,16 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Log
-public class AberturaContaService implements AberturaContaUseCase {
+public class CadastroContaService implements CadastroContaUseCase {
 
-    private final AberturaContaEntityPort aberturaContaPort;
-    private final ProcessarContaPort processarContaPort;
+    private final CadastroContaEntityPort aberturaContaPort;
 
     @Override
     public Conta cadastrarConta(Conta conta) {
 
-        log.info("Conta processada :" + conta);
+        log.info("Conta processada: " + conta);
 
-       return Optional.ofNullable(processarContaPort.processar(conta))
+        return Optional.ofNullable(aberturaContaPort.processar(conta))
                 .orElseThrow(ResourceException::new);
     }
 
@@ -34,7 +32,7 @@ public class AberturaContaService implements AberturaContaUseCase {
     public ContaDocument cadastrarContaEntity(Conta conta) {
 
         try {
-            log.info("Conta salva no banco de dados :" + conta);
+            log.info("Conta salva no banco de dados: " + conta);
             return aberturaContaPort.salvarContaEntity(conta);
         } catch (Exception e) {
             log.severe(e.getMessage());
